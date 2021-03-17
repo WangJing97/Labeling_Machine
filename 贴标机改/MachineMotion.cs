@@ -194,6 +194,13 @@ namespace 贴标机改
                 DoSlowStop(axis);
             }
         }
+        public void DoFastStopAll()
+        {
+            for (short axis = 0; axis < define_AxisNum.wd_axis_count; axis++)
+            {
+                DoFastStop(axis);
+            }
+        }
 
 
         //慢停

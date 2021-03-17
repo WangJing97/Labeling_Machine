@@ -144,9 +144,9 @@ namespace 贴标机改
                 }
                 bool away = ((Button)sender).TabIndex % 2 == 0;
                 if (sele == 0)
-                    motion.DoSetSpeed(axis, define_AxisNum.ws_speed_fast);
-                else
                     motion.DoSetSpeed(axis, define_AxisNum.ws_speed_slow);
+                else
+                    motion.DoSetSpeed(axis, define_AxisNum.ws_speed_fast);
                 motion.DoAxisMoveJog(axis, away);
             }
 
@@ -157,11 +157,11 @@ namespace 贴标机改
             int sele = int.Parse((string)group_speed.Tag);
             if (sele >= 2) return;
             if (motion.IsAllAxisReady)
-                motion.DoSlowStopAll();
+                motion.DoFastStopAll();
         }
         private void button_StopAxis_Click(object sender, MouseEventArgs e)
         {
-            motion.DoSlowStopAll();
+            motion.DoFastStopAll();
         }
         private void radio_Click(object sender, EventArgs e)
         {
