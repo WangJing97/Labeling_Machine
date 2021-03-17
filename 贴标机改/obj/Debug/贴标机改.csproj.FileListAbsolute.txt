@@ -20,3 +20,14 @@ D:\C#\贴标机\贴标机改\obj\Debug\贴标机改.Form_System.resources
 \\tsclient\D\C#\贴标机\贴标机改\obj\Debug\贴标机改.csproj.CoreCompileInputs.cache
 \\tsclient\D\C#\贴标机\贴标机改\obj\Debug\贴标机改.exe
 \\tsclient\D\C#\贴标机\贴标机改\obj\Debug\贴标机改.pdb
+\\tsclient\D\C#\Labeling_Machine\贴标机改\bin\Debug\贴标机改.exe.config
+\\tsclient\D\C#\Labeling_Machine\贴标机改\bin\Debug\贴标机改.exe
+\\tsclient\D\C#\Labeling_Machine\贴标机改\bin\Debug\贴标机改.pdb
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.csprojAssemblyReference.cache
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.FormMain.resources
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.Form_System.resources
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.Properties.Resources.resources
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.csproj.GenerateResource.cache
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.csproj.CoreCompileInputs.cache
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.exe
+\\tsclient\D\C#\Labeling_Machine\贴标机改\obj\Debug\贴标机改.pdb
