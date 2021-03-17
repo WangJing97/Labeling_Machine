@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "贴标机", "贴标机\贴标机.csproj", "{00C0E6EB-D92B-4212-9627-3078FEB3E720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "贴标机改", "贴标机改\贴标机改.csproj", "{A2C48897-5C1E-449C-8429-FE5F24CD415A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00C0E6EB-D92B-4212-9627-3078FEB3E720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C0E6EB-D92B-4212-9627-3078FEB3E720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C0E6EB-D92B-4212-9627-3078FEB3E720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C0E6EB-D92B-4212-9627-3078FEB3E720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C48897-5C1E-449C-8429-FE5F24CD415A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C48897-5C1E-449C-8429-FE5F24CD415A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C48897-5C1E-449C-8429-FE5F24CD415A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C48897-5C1E-449C-8429-FE5F24CD415A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B316748A-C346-48C0-B889-5B22B3FB3A5B}
+	EndGlobalSection
+EndGlobal
