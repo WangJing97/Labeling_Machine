@@ -54,7 +54,10 @@ namespace 贴标机改
 
         public void Do_Thread_Work()
         {
+
             //线程初始化
+            Do_Thread_Init();
+
             while (MRuning)
             {
                 Thread.Sleep(50);
@@ -76,6 +79,10 @@ namespace 贴标机改
             {
                 motion.DoState();//读信号状态
             }
+        }
+        public void Do_Thread_Init()
+        {
+
         }
 
 

@@ -50,6 +50,7 @@
     <Compile Include="define_AxisInfo.cs" />
     <Compile Include="define_AxisNum.cs" />
     <Compile Include="define_AxisState.cs" />
+    <Compile Include="define_mesion.cs" />
     <Compile Include="define_system.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
