@@ -11,13 +11,13 @@ namespace 贴标机改
         public ushort AxisCard { get; set; }
         public ushort AxisCode { get; set; }
         public uint AxisMask { get; set; }
-        public double AxisScale { get; set; }
+        public int AxisScale { get; set; }
         public int SlowSpeed { get; set; }
         public int HomeSpeed { get; set; }
         public int FastSpeed { get; set; }
         public int WorkSpeed { get; set; }
         public int UserSpeed { get; set; }
-        public int AccTime { get; set; }
+        public double AccTime { get; set; }
         public bool isLimit { get; set; }
         public bool isServo { get; set; }
         public int LimitPos { get; set; }

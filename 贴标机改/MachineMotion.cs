@@ -18,11 +18,21 @@ namespace 贴标机改
 
 
         private bool isOnline = false;
-        public bool IsOnline
-        {
-            get { return isOnline; }
-            set { isOnline = value; }
+        public bool IsOnline { get { return isOnline; } }
+
+        private bool isAllAxisReady = false;
+        public bool IsAllAxisReady
+        { 
+            get
+            {
+                foreach (define_AxisState AxisState in AxisStateList)
+                {
+                    AxisState.isReady = true ? isAllAxisReady = true : isAllAxisReady = false;
+                }
+                return isAllAxisReady;
+            } 
         }
+
 
         public int PlaceX { get { return AxisPlace[define_AxisNum.wd_axis_xx]; } }
         public int PlaceY { get { return AxisPlace[define_AxisNum.wd_axis_yy]; } }
@@ -57,9 +67,15 @@ namespace 贴标机改
                         LTDMC.dmc_set_home_pin_logic(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 0, 0);
                     }
                     if (AxisInfoList[axis].isServo)
+                    {
                         LTDMC.dmc_set_alm_mode(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 0, 0, 0);
+                        LTDMC.dmc_write_sevon_pin(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 0);
+                    }
                     else
+                    {
                         LTDMC.dmc_set_alm_mode(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 1, 0, 0);
+                        LTDMC.dmc_write_sevon_pin(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 1);
+                    }
                     DoSoftLimit(axis, false);
                 }
             }
@@ -107,7 +123,6 @@ namespace 贴标机改
                     isOrgin = org,
                     isNegLt = nlt,
                     isPosLt = plt,
-                    //Place = place
                 }) ;
             }
 
@@ -134,22 +149,63 @@ namespace 贴标机改
             AxisSpeed[axis] = GetSpeed(axis, speed);
         }
 
+
         private int GetSpeed(int axis, int speed)
         {
             switch (speed)
             {
-                case define_AxisNum.ws_speed_slow: return AxisInfoList[axis].SlowSpeed;
-                case define_AxisNum.ws_speed_home: return AxisInfoList[axis].HomeSpeed;
-                case define_AxisNum.ws_speed_fast: return AxisInfoList[axis].FastSpeed;
-                case define_AxisNum.ws_speed_work: return AxisInfoList[axis].WorkSpeed;
-                default: return AxisInfoList[axis].SlowSpeed;
+                case define_AxisNum.ws_speed_slow: return AxisInfoList[axis].SlowSpeed * AxisInfoList[axis].AxisScale;
+                case define_AxisNum.ws_speed_home: return AxisInfoList[axis].HomeSpeed * AxisInfoList[axis].AxisScale;
+                case define_AxisNum.ws_speed_fast: return AxisInfoList[axis].FastSpeed * AxisInfoList[axis].AxisScale;
+                case define_AxisNum.ws_speed_work: return AxisInfoList[axis].WorkSpeed * AxisInfoList[axis].AxisScale;
+                default: return AxisInfoList[axis].SlowSpeed * AxisInfoList[axis].AxisScale;
             }
 
         }
 
         #region 控制运动
         //速度
+        /// <summary>
+        /// 定长运动，相对
+        /// </summary>
+        public void DoAxisMoveByMM(int axis, int pos)
+        {
+            if (AxisStateList[axis].isAlarm) return;
+            LTDMC.dmc_set_profile(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 100, AxisSpeed[axis], AxisInfoList[axis].AccTime, AxisInfoList[axis].AccTime, 0);
+            LTDMC.dmc_pmove(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, pos, 0);
 
+        }
+        public void DoAxisMoveJog(int axis, bool nway)
+        {
+            //正方向true
+            if (AxisStateList[axis].isAlarm) return;
+            LTDMC.dmc_set_profile(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 100, AxisSpeed[axis], AxisInfoList[axis].AccTime, AxisInfoList[axis].AccTime, 0);
+            if (nway)
+                LTDMC.dmc_vmove(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 1);
+            else
+                LTDMC.dmc_vmove(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 0);
+
+        }
+
+        public void DoSlowStopAll()
+        {
+            for (short axis = 0; axis < define_AxisNum.wd_axis_count; axis++)
+            {
+                DoSlowStop(axis);
+            }
+        }
+
+
+        //慢停
+        public void DoSlowStop(int axis)
+        {
+            LTDMC.dmc_stop(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 0);
+        }
+        //快停
+        public void DoFastStop(int axis)
+        {
+            LTDMC.dmc_stop(AxisInfoList[axis].AxisCard, AxisInfoList[axis].AxisCode, 1);
+        }
         #endregion
 
 

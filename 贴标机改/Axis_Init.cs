@@ -48,12 +48,12 @@ namespace 贴标机改
                     AxisMask = (uint)1 << axis,           //相应轴位置为1,取轴状态
                     isLimit = reader.GetBool(wp_axis_limit + axis.ToString()),
                     isServo = reader.GetBool(wp_axis_servo + axis.ToString()),
-                    AxisScale = reader.GetFloat(wp_axis_scale + axis.ToString()),
+                    AxisScale = reader.GetInt(wp_axis_scale + axis.ToString()),
                     SlowSpeed = reader.GetInt(wp_axis_slow + axis.ToString()),
                     HomeSpeed = reader.GetInt(wp_axis_home + axis.ToString()),
                     FastSpeed = reader.GetInt(wp_axis_fast + axis.ToString()),
                     WorkSpeed = reader.GetInt(wp_axis_work + axis.ToString()),
-                    AccTime = reader.GetInt(wp_axis_acc + axis.ToString()),
+                    AccTime = reader.GetDouble(wp_axis_acc + axis.ToString()),
                     OrginOff = reader.GetInt(wp_axis_ogoff + axis.ToString()),
                     OrginMov = reader.GetInt(wp_axis_ormov + axis.ToString()),
                     LimitNeg = reader.GetInt(wp_axis_ppneg + axis.ToString()),
@@ -72,12 +72,12 @@ namespace 贴标机改
                 writer.WriteInt(wp_axis_code + axis.ToString(), AxisInfoList[axis].AxisCode);
                 writer.WriteBool(wp_axis_limit + axis.ToString(), AxisInfoList[axis].isLimit);
                 writer.WriteBool(wp_axis_servo + axis.ToString(), AxisInfoList[axis].isServo);
-                writer.WriteDouble(wp_axis_scale + axis.ToString(), AxisInfoList[axis].AxisScale);
+                writer.WriteInt(wp_axis_scale + axis.ToString(), AxisInfoList[axis].AxisScale);
                 writer.WriteInt(wp_axis_slow + axis.ToString(), AxisInfoList[axis].SlowSpeed);
                 writer.WriteInt(wp_axis_home + axis.ToString(), AxisInfoList[axis].HomeSpeed);
                 writer.WriteInt(wp_axis_fast + axis.ToString(), AxisInfoList[axis].FastSpeed);
                 writer.WriteInt(wp_axis_work + axis.ToString(), AxisInfoList[axis].WorkSpeed);
-                writer.WriteInt(wp_axis_acc + axis.ToString(), AxisInfoList[axis].AccTime);
+                writer.WriteDouble(wp_axis_acc + axis.ToString(), AxisInfoList[axis].AccTime);
                 writer.WriteInt(wp_axis_ogoff + axis.ToString(), AxisInfoList[axis].OrginOff);
                 writer.WriteInt(wp_axis_ormov + axis.ToString(), AxisInfoList[axis].OrginMov);
                 writer.WriteInt(wp_axis_ppneg + axis.ToString(), AxisInfoList[axis].LimitNeg);

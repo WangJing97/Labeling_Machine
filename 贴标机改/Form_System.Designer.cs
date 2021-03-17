@@ -37,7 +37,7 @@ namespace 贴标机改
             this.label5 = new System.Windows.Forms.Label();
             this.text_head_index = new System.Windows.Forms.ComboBox();
             this.group_speed = new System.Windows.Forms.GroupBox();
-            this.text_radio_by = new System.Windows.Forms.TextBox();
+            this.text_radio_by = new System.Windows.Forms.NumericUpDown();
             this.radio_by = new System.Windows.Forms.RadioButton();
             this.radio_dmm = new System.Windows.Forms.RadioButton();
             this.radio_mm = new System.Windows.Forms.RadioButton();
@@ -79,6 +79,7 @@ namespace 贴标机改
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_move.SuspendLayout();
             this.group_speed.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.text_radio_by)).BeginInit();
             this.panel_axis.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -180,12 +181,10 @@ namespace 贴标机改
             // 
             // text_radio_by
             // 
-            this.text_radio_by.Enabled = false;
-            this.text_radio_by.Location = new System.Drawing.Point(47, 127);
+            this.text_radio_by.Location = new System.Drawing.Point(44, 128);
             this.text_radio_by.Name = "text_radio_by";
-            this.text_radio_by.Size = new System.Drawing.Size(49, 21);
-            this.text_radio_by.TabIndex = 14;
-            this.text_radio_by.Text = "0";
+            this.text_radio_by.Size = new System.Drawing.Size(56, 21);
+            this.text_radio_by.TabIndex = 15;
             // 
             // radio_by
             // 
@@ -194,20 +193,22 @@ namespace 贴标机改
             this.radio_by.Name = "radio_by";
             this.radio_by.Size = new System.Drawing.Size(35, 16);
             this.radio_by.TabIndex = 5;
-            this.radio_by.Tag = "";
+            this.radio_by.Tag = "5";
             this.radio_by.Text = "移";
             this.radio_by.UseVisualStyleBackColor = true;
+            this.radio_by.Click += new System.EventHandler(this.radio_Click);
             // 
             // radio_dmm
             // 
             this.radio_dmm.AutoSize = true;
             this.radio_dmm.Location = new System.Drawing.Point(14, 106);
             this.radio_dmm.Name = "radio_dmm";
-            this.radio_dmm.Size = new System.Drawing.Size(59, 16);
+            this.radio_dmm.Size = new System.Drawing.Size(53, 16);
             this.radio_dmm.TabIndex = 4;
-            this.radio_dmm.Tag = "";
-            this.radio_dmm.Text = "0.01mm";
+            this.radio_dmm.Tag = "4";
+            this.radio_dmm.Text = "1unit";
             this.radio_dmm.UseVisualStyleBackColor = true;
+            this.radio_dmm.Click += new System.EventHandler(this.radio_Click);
             // 
             // radio_mm
             // 
@@ -216,20 +217,22 @@ namespace 贴标机改
             this.radio_mm.Name = "radio_mm";
             this.radio_mm.Size = new System.Drawing.Size(59, 16);
             this.radio_mm.TabIndex = 3;
-            this.radio_mm.Tag = "";
-            this.radio_mm.Text = "0.10mm";
+            this.radio_mm.Tag = "3";
+            this.radio_mm.Text = "10unit";
             this.radio_mm.UseVisualStyleBackColor = true;
+            this.radio_mm.Click += new System.EventHandler(this.radio_Click);
             // 
             // radio_cm
             // 
             this.radio_cm.AutoSize = true;
             this.radio_cm.Location = new System.Drawing.Point(14, 62);
             this.radio_cm.Name = "radio_cm";
-            this.radio_cm.Size = new System.Drawing.Size(59, 16);
+            this.radio_cm.Size = new System.Drawing.Size(65, 16);
             this.radio_cm.TabIndex = 2;
-            this.radio_cm.Tag = "";
-            this.radio_cm.Text = "1.00mm";
+            this.radio_cm.Tag = "2";
+            this.radio_cm.Text = "100unit";
             this.radio_cm.UseVisualStyleBackColor = true;
+            this.radio_cm.Click += new System.EventHandler(this.radio_Click);
             // 
             // radio_fast
             // 
@@ -238,9 +241,10 @@ namespace 贴标机改
             this.radio_fast.Name = "radio_fast";
             this.radio_fast.Size = new System.Drawing.Size(71, 16);
             this.radio_fast.TabIndex = 1;
-            this.radio_fast.Tag = "";
+            this.radio_fast.Tag = "1";
             this.radio_fast.Text = "快速点动";
             this.radio_fast.UseVisualStyleBackColor = true;
+            this.radio_fast.Click += new System.EventHandler(this.radio_Click);
             // 
             // radio_slow
             // 
@@ -251,9 +255,10 @@ namespace 贴标机改
             this.radio_slow.Size = new System.Drawing.Size(71, 16);
             this.radio_slow.TabIndex = 0;
             this.radio_slow.TabStop = true;
-            this.radio_slow.Tag = "";
+            this.radio_slow.Tag = "0";
             this.radio_slow.Text = "慢速点动";
             this.radio_slow.UseVisualStyleBackColor = true;
+            this.radio_slow.Click += new System.EventHandler(this.radio_Click);
             // 
             // button_move_r_neg
             // 
@@ -263,9 +268,12 @@ namespace 贴标机改
             this.button_move_r_neg.Location = new System.Drawing.Point(102, 116);
             this.button_move_r_neg.Name = "button_move_r_neg";
             this.button_move_r_neg.Size = new System.Drawing.Size(45, 45);
-            this.button_move_r_neg.TabIndex = 19;
+            this.button_move_r_neg.TabIndex = 7;
             this.button_move_r_neg.Tag = "";
             this.button_move_r_neg.UseVisualStyleBackColor = false;
+            this.button_move_r_neg.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_r_neg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_r_neg.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // button_move_r_pos
             // 
@@ -275,9 +283,12 @@ namespace 贴标机改
             this.button_move_r_pos.Location = new System.Drawing.Point(152, 116);
             this.button_move_r_pos.Name = "button_move_r_pos";
             this.button_move_r_pos.Size = new System.Drawing.Size(45, 45);
-            this.button_move_r_pos.TabIndex = 20;
+            this.button_move_r_pos.TabIndex = 8;
             this.button_move_r_pos.Tag = "";
             this.button_move_r_pos.UseVisualStyleBackColor = false;
+            this.button_move_r_pos.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_r_pos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_r_pos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // button_move_back_w
             // 
@@ -287,10 +298,13 @@ namespace 贴标机改
             this.button_move_back_w.Location = new System.Drawing.Point(152, 17);
             this.button_move_back_w.Name = "button_move_back_w";
             this.button_move_back_w.Size = new System.Drawing.Size(45, 45);
-            this.button_move_back_w.TabIndex = 17;
+            this.button_move_back_w.TabIndex = 5;
             this.button_move_back_w.TabStop = false;
             this.button_move_back_w.Tag = "";
             this.button_move_back_w.UseVisualStyleBackColor = false;
+            this.button_move_back_w.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_back_w.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_back_w.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // button_move_back_y
             // 
@@ -300,10 +314,13 @@ namespace 贴标机改
             this.button_move_back_y.Location = new System.Drawing.Point(57, 21);
             this.button_move_back_y.Name = "button_move_back_y";
             this.button_move_back_y.Size = new System.Drawing.Size(45, 45);
-            this.button_move_back_y.TabIndex = 16;
+            this.button_move_back_y.TabIndex = 3;
             this.button_move_back_y.TabStop = false;
             this.button_move_back_y.Tag = "";
             this.button_move_back_y.UseVisualStyleBackColor = false;
+            this.button_move_back_y.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_back_y.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_back_y.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // button_move_forw_w
             // 
@@ -313,10 +330,13 @@ namespace 贴标机改
             this.button_move_forw_w.Location = new System.Drawing.Point(152, 67);
             this.button_move_forw_w.Name = "button_move_forw_w";
             this.button_move_forw_w.Size = new System.Drawing.Size(45, 45);
-            this.button_move_forw_w.TabIndex = 18;
+            this.button_move_forw_w.TabIndex = 6;
             this.button_move_forw_w.TabStop = false;
             this.button_move_forw_w.Tag = "";
             this.button_move_forw_w.UseVisualStyleBackColor = false;
+            this.button_move_forw_w.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_forw_w.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_forw_w.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // button_move_back_x
             // 
@@ -326,10 +346,13 @@ namespace 贴标机改
             this.button_move_back_x.Location = new System.Drawing.Point(10, 67);
             this.button_move_back_x.Name = "button_move_back_x";
             this.button_move_back_x.Size = new System.Drawing.Size(45, 45);
-            this.button_move_back_x.TabIndex = 13;
+            this.button_move_back_x.TabIndex = 1;
             this.button_move_back_x.TabStop = false;
             this.button_move_back_x.Tag = "";
             this.button_move_back_x.UseVisualStyleBackColor = false;
+            this.button_move_back_x.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_back_x.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_back_x.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // button_move_stop
             // 
@@ -338,11 +361,12 @@ namespace 贴标机改
             this.button_move_stop.Location = new System.Drawing.Point(56, 67);
             this.button_move_stop.Name = "button_move_stop";
             this.button_move_stop.Size = new System.Drawing.Size(45, 45);
-            this.button_move_stop.TabIndex = 12;
+            this.button_move_stop.TabIndex = 0;
             this.button_move_stop.TabStop = false;
             this.button_move_stop.Tag = "";
             this.button_move_stop.Text = "停止";
             this.button_move_stop.UseVisualStyleBackColor = false;
+            this.button_move_stop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_StopAxis_Click);
             // 
             // button_move_forw_x
             // 
@@ -352,10 +376,13 @@ namespace 贴标机改
             this.button_move_forw_x.Location = new System.Drawing.Point(102, 67);
             this.button_move_forw_x.Name = "button_move_forw_x";
             this.button_move_forw_x.Size = new System.Drawing.Size(45, 45);
-            this.button_move_forw_x.TabIndex = 14;
+            this.button_move_forw_x.TabIndex = 2;
             this.button_move_forw_x.TabStop = false;
             this.button_move_forw_x.Tag = "";
             this.button_move_forw_x.UseVisualStyleBackColor = false;
+            this.button_move_forw_x.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_forw_x.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_forw_x.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // button_move_forw_y
             // 
@@ -365,10 +392,13 @@ namespace 贴标机改
             this.button_move_forw_y.Location = new System.Drawing.Point(56, 116);
             this.button_move_forw_y.Name = "button_move_forw_y";
             this.button_move_forw_y.Size = new System.Drawing.Size(45, 45);
-            this.button_move_forw_y.TabIndex = 15;
+            this.button_move_forw_y.TabIndex = 4;
             this.button_move_forw_y.TabStop = false;
             this.button_move_forw_y.Tag = "";
             this.button_move_forw_y.UseVisualStyleBackColor = false;
+            this.button_move_forw_y.Click += new System.EventHandler(this.button_move_xy_Click);
+            this.button_move_forw_y.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseDown);
+            this.button_move_forw_y.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_move_axis_MouseUp);
             // 
             // panel_axis
             // 
@@ -627,6 +657,7 @@ namespace 贴标机改
             this.panel_move.PerformLayout();
             this.group_speed.ResumeLayout(false);
             this.group_speed.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.text_radio_by)).EndInit();
             this.panel_axis.ResumeLayout(false);
             this.panel_axis.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -643,7 +674,6 @@ namespace 贴标机改
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox text_head_index;
         private System.Windows.Forms.GroupBox group_speed;
-        private System.Windows.Forms.TextBox text_radio_by;
         private System.Windows.Forms.RadioButton radio_by;
         private System.Windows.Forms.RadioButton radio_dmm;
         private System.Windows.Forms.RadioButton radio_mm;
@@ -681,5 +711,6 @@ namespace 贴标机改
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PropertyGrid listgrid_params;
+        private System.Windows.Forms.NumericUpDown text_radio_by;
     }
 }
