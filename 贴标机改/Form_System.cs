@@ -123,6 +123,7 @@ namespace 贴标机改
         }
         private void button_move_axis_MouseDown(object sender, MouseEventArgs e)
         {
+            //1123
             if (!motion.IsAllAxisReady) return;
             //任务停止检测
             //if (!mIpc.isTaskReady) return;
