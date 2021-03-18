@@ -12,6 +12,7 @@ namespace 贴标机改
 {
     public partial class Form_System : Form
     {
+        //推送视觉的部分
         public Form_System()
         {
             InitializeComponent();
@@ -82,7 +83,7 @@ namespace 贴标机改
             }
 
         }
-
+        
         private static readonly int[] aposarray = { 100, 10, 1, 0 };
         private void button_move_xy_Click(object sender, EventArgs e)
         {
@@ -123,7 +124,6 @@ namespace 贴标机改
         }
         private void button_move_axis_MouseDown(object sender, MouseEventArgs e)
         {
-            //1123
             if (!motion.IsAllAxisReady) return;
             //任务停止检测
             //if (!mIpc.isTaskReady) return;
